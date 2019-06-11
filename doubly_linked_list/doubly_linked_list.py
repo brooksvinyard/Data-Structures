@@ -50,13 +50,13 @@ class DoublyLinkedList:
       new_head = ListNode(value, None, old_head)
       old_head.prev = new_head
       self.head = new_head
-    else:
+    else: # It was an empty list
       self.head = ListNode(value, None, None)
       self.tail = self.head
 
   def remove_from_head(self):
     old_head = self.head.value
-    if self.head is self.tail:
+    if self.head is self.tail: # The node was the only one in the list
       self.head = None
       self.tail = None
       self.length = 0
@@ -74,14 +74,14 @@ class DoublyLinkedList:
       new_tail = ListNode(value, old_tail, None)
       old_tail.next = new_tail
       self.tail = new_tail
-    else:
+    else: # It was an empty list
       new_tail = ListNode(value, None, None)
       self.tail = new_tail
       self.head = new_tail
 
   def remove_from_tail(self):
     old_tail = self.tail.value
-    if self.tail is self.head:
+    if self.tail is self.head: # It is a list on one
       self.head = None
       self.tail = None
       self.length = 0
@@ -119,9 +119,9 @@ class DoublyLinkedList:
     node.prev = old_tail
 
   def delete(self, node):
-    if node is self.head:
+    if node is self.head: # Node was head
       self.remove_from_head()
-    elif node is self.tail:
+    elif node is self.tail: # Node was tail
       self.remove_from_tail()
     else:
       self.length -= 1
@@ -131,7 +131,7 @@ class DoublyLinkedList:
         node.next.prev = node.prev
     
   def get_max(self):
-    if not self.head and not self.tail:
+    if not self.head and not self.tail: #If empty list
       return False
 
     max_value = self.head.value
